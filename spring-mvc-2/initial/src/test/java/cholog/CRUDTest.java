@@ -16,7 +16,7 @@ class CRUDTest {
     void create() {
         var response = RestAssured
                 .given().log().all()
-                .body(new Member("brown", 20))
+                .body(new Member(1L,"brown", 20))
                 .contentType(ContentType.JSON)
                 .when().post("/members")
                 .then().log().all().extract();
@@ -33,11 +33,11 @@ class CRUDTest {
                 .contentType(ContentType.JSON)
                 .when().get("/members")
                 .then().log().all().extract();
-
+        System.out.println(response);
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.jsonPath().getList("", Member.class)).hasSize(1);
     }
-
+//
     @Test
     void update() {
         create();
@@ -51,7 +51,7 @@ class CRUDTest {
 
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     }
-
+//
     @Test
     void delete() {
         create();

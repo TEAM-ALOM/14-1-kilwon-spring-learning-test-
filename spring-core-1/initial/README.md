@@ -18,7 +18,7 @@
 ```java
 @Component
 public class SpringBean {
-}
+}   
 ```
 
 <br>

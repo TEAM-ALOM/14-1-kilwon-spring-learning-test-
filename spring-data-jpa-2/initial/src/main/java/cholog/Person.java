@@ -1,9 +1,6 @@
 package cholog;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Person {
@@ -12,9 +9,9 @@ public class Person {
     private Long id;
     private String name;
 
-    public Person() {
-
-    }
+    @OneToOne(mappedBy = "person")
+    private Author author;
+    public Person() {}
 
     public Person(String name) {
         this.name = name;
@@ -29,6 +26,6 @@ public class Person {
     }
 
     public Author getAuthor() {
-        return null;
+        return author;
     }
 }
